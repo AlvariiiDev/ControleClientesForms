@@ -14,9 +14,25 @@ namespace ControleClientes
     {
         private readonly ClienteRepository _repository;
         private int? editingId = null;
+
+        List<ItemGenero> itemGeneros = new List<ItemGenero>
+        {
+            new ItemGenero {Valor = Genero.Maculino, Descricao = "Maculino" },
+            new ItemGenero {Valor = Genero.Feminino, Descricao = "Feminino" },
+        };
+        private void CarregarGenero()
+        {
+            cmbGenero.DataSource = itemGeneros;
+            cmbGenero.DisplayMember = "Descricao";
+            cmbGenero.ValueMember = "Valor";
+        }
+
+
+
         public ClienteForm()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            CarregarGenero();    
             _repository = new ClienteRepository();
             AtualizarGrid();
         }
@@ -50,10 +66,12 @@ namespace ControleClientes
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            ItemGenero genero = (ItemGenero)cmbGenero.SelectedItem;
             var cliente = new Cliente
             {
                 Nome = txtNome.Text.Trim(),
-                Email = txtEmail.Text.Trim()
+                Email = txtEmail.Text.Trim(),
+                Genero = genero.Valor
             };
             if (editingId == null)
                 _repository.Adicionar(cliente);
@@ -83,5 +101,9 @@ namespace ControleClientes
                 tcCliente.SelectTab(tpClienteConsulta);
             }
         }
+
+      
+
+
     }
 }

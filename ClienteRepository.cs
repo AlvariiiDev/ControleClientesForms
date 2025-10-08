@@ -33,6 +33,7 @@ namespace ControleClientes
             {
                 clienteExistente.Nome = cliente.Nome;
                 clienteExistente.Email = cliente.Email;
+                clienteExistente.Genero = cliente.Genero;
                 _context.SaveChanges();
             }
         }

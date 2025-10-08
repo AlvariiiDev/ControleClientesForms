@@ -41,6 +41,8 @@
             colNome = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             tpClienteCadastro = new TabPage();
+            label1 = new Label();
+            cmbGenero = new ComboBox();
             btnExcluir = new Button();
             btnSalvar = new Button();
             btnCancelar = new Button();
@@ -188,6 +190,8 @@
             // 
             // tpClienteCadastro
             // 
+            tpClienteCadastro.Controls.Add(label1);
+            tpClienteCadastro.Controls.Add(cmbGenero);
             tpClienteCadastro.Controls.Add(btnExcluir);
             tpClienteCadastro.Controls.Add(btnSalvar);
             tpClienteCadastro.Controls.Add(btnCancelar);
@@ -202,6 +206,24 @@
             tpClienteCadastro.TabIndex = 1;
             tpClienteCadastro.Text = "Cadastro";
             tpClienteCadastro.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(292, 3);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 8;
+            label1.Text = "Genero";
+            // 
+            // cmbGenero
+            // 
+            cmbGenero.FormattingEnabled = true;
+            cmbGenero.Location = new Point(292, 21);
+            cmbGenero.Name = "cmbGenero";
+            cmbGenero.Size = new Size(121, 23);
+            cmbGenero.TabIndex = 7;
+
             // 
             // btnExcluir
             // 
@@ -312,5 +334,7 @@
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn colEmail;
+        private Label label1;
+        private ComboBox cmbGenero;
     }
 }
