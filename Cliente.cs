@@ -12,5 +12,6 @@ namespace ControleClientes
         public string Nome { get; set; }
         public string Email { get; set; }
         public Genero Genero { get; set; }
+        public EstadoCivilEnum EstadoCivil { get; set; }
     }
 }

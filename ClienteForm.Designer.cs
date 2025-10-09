@@ -41,6 +41,8 @@
             colNome = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             tpClienteCadastro = new TabPage();
+            label2 = new Label();
+            cmbEstadoCivil = new ComboBox();
             label1 = new Label();
             cmbGenero = new ComboBox();
             btnExcluir = new Button();
@@ -118,15 +120,15 @@
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(btnVisualizar);
             panel1.Controls.Add(btnNovo);
-            panel1.Location = new Point(0, 435);
+            panel1.Location = new Point(-4, 429);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1048, 42);
+            panel1.Size = new Size(1055, 42);
             panel1.TabIndex = 2;
             // 
             // btnVisualizar
             // 
             btnVisualizar.Dock = DockStyle.Right;
-            btnVisualizar.Location = new Point(860, 0);
+            btnVisualizar.Location = new Point(867, 0);
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Size = new Size(94, 42);
             btnVisualizar.TabIndex = 1;
@@ -137,7 +139,7 @@
             // btnNovo
             // 
             btnNovo.Dock = DockStyle.Right;
-            btnNovo.Location = new Point(954, 0);
+            btnNovo.Location = new Point(961, 0);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(94, 42);
             btnNovo.TabIndex = 0;
@@ -190,6 +192,8 @@
             // 
             // tpClienteCadastro
             // 
+            tpClienteCadastro.Controls.Add(label2);
+            tpClienteCadastro.Controls.Add(cmbEstadoCivil);
             tpClienteCadastro.Controls.Add(label1);
             tpClienteCadastro.Controls.Add(cmbGenero);
             tpClienteCadastro.Controls.Add(btnExcluir);
@@ -207,13 +211,30 @@
             tpClienteCadastro.Text = "Cadastro";
             tpClienteCadastro.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(292, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 15);
+            label2.TabIndex = 10;
+            label2.Text = "Estado Civil";
+            // 
+            // cmbEstadoCivil
+            // 
+            cmbEstadoCivil.FormattingEnabled = true;
+            cmbEstadoCivil.Location = new Point(292, 65);
+            cmbEstadoCivil.Name = "cmbEstadoCivil";
+            cmbEstadoCivil.Size = new Size(121, 23);
+            cmbEstadoCivil.TabIndex = 9;
+            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(292, 3);
             label1.Name = "label1";
             label1.Size = new Size(45, 15);
-            label1.TabIndex = 8;
+            label1.TabIndex = 1;
             label1.Text = "Genero";
             // 
             // cmbGenero
@@ -222,15 +243,14 @@
             cmbGenero.Location = new Point(292, 21);
             cmbGenero.Name = "cmbGenero";
             cmbGenero.Size = new Size(121, 23);
-            cmbGenero.TabIndex = 7;
-
+            cmbGenero.TabIndex = 3;
             // 
             // btnExcluir
             // 
             btnExcluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnExcluir.Image = Properties.Resources.icons8_lixo_16__1_;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExcluir.Location = new Point(17, 449);
+            btnExcluir.Location = new Point(6, 440);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(94, 31);
             btnExcluir.TabIndex = 6;
@@ -241,10 +261,10 @@
             // btnSalvar
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalvar.Location = new Point(780, 449);
+            btnSalvar.Location = new Point(851, 443);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(94, 31);
-            btnSalvar.TabIndex = 5;
+            btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
@@ -252,10 +272,10 @@
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancelar.Location = new Point(880, 449);
+            btnCancelar.Location = new Point(951, 443);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 31);
-            btnCancelar.TabIndex = 4;
+            btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -265,7 +285,7 @@
             txtEmail.Location = new Point(3, 65);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(263, 23);
-            txtEmail.TabIndex = 3;
+            txtEmail.TabIndex = 5;
             // 
             // lblEmail
             // 
@@ -273,7 +293,7 @@
             lblEmail.Location = new Point(3, 47);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(36, 15);
-            lblEmail.TabIndex = 2;
+            lblEmail.TabIndex = 4;
             lblEmail.Text = "Email";
             // 
             // txtNome
@@ -281,7 +301,7 @@
             txtNome.Location = new Point(3, 21);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(263, 23);
-            txtNome.TabIndex = 1;
+            txtNome.TabIndex = 2;
             // 
             // lblNome
             // 
@@ -336,5 +356,7 @@
         private DataGridViewTextBoxColumn colEmail;
         private Label label1;
         private ComboBox cmbGenero;
+        private Label label2;
+        private ComboBox cmbEstadoCivil;
     }
 }

@@ -27,14 +27,28 @@ namespace ControleClientes
             cmbGenero.ValueMember = "Valor";
         }
 
+        List<ItemEstadoCivil> estadoCivil = new List<ItemEstadoCivil>
+        {
+            new ItemEstadoCivil {Valor = EstadoCivilEnum.Casado, Descricao = "Casado" },
+            new ItemEstadoCivil {Valor = EstadoCivilEnum.Solteiro, Descricao = "Solteiro" },
+        };
+        private void CarregarEstadoCivil()
+        {
+            cmbEstadoCivil.DataSource = estadoCivil;
+            cmbEstadoCivil.DisplayMember = "Descricao";
+            cmbEstadoCivil.ValueMember = "Valor";
+        }
+
 
 
         public ClienteForm()
         {
+            
             InitializeComponent(); 
             CarregarGenero();    
             _repository = new ClienteRepository();
             AtualizarGrid();
+            CarregarEstadoCivil();
         }
         private void AtualizarGrid()
         {
@@ -45,8 +59,10 @@ namespace ControleClientes
         {
             txtNome.Clear();
             txtEmail.Clear();
+            cmbGenero.SelectedIndex = -1;
             editingId = null;
             gridClientes.ClearSelection();
+            cmbEstadoCivil.SelectedIndex = -1;
         }
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
@@ -56,6 +72,9 @@ namespace ControleClientes
             txtNome.Text = cliente.Nome;
             txtEmail.Text = cliente.Email;
             editingId = cliente.Id;
+            cmbGenero.SelectedItem = itemGeneros.FirstOrDefault(
+                g => g.Valor == cliente.Genero);
+                
             tcCliente.SelectTab(tpClienteCadastro);
         }
 
@@ -67,11 +86,14 @@ namespace ControleClientes
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             ItemGenero genero = (ItemGenero)cmbGenero.SelectedItem;
+
+            ItemEstadoCivil estadoCivil = (ItemEstadoCivil)cmbEstadoCivil.SelectedItem;
             var cliente = new Cliente
             {
                 Nome = txtNome.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
-                Genero = genero.Valor
+                Genero = genero.Valor,
+                EstadoCivil = estadoCivil.Valor
             };
             if (editingId == null)
                 _repository.Adicionar(cliente);
