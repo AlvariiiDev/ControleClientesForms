@@ -35,6 +35,7 @@ namespace ControleClientes
                 clienteExistente.Email = cliente.Email;
                 clienteExistente.Genero = cliente.Genero;
                 clienteExistente.EstadoCivil = cliente.EstadoCivil;
+                clienteExistente.Cep = cliente.Cep;
                 _context.SaveChanges();
             }
         }

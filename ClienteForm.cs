@@ -43,9 +43,9 @@ namespace ControleClientes
 
         public ClienteForm()
         {
-            
-            InitializeComponent(); 
-            CarregarGenero();    
+
+            InitializeComponent();
+            CarregarGenero();
             _repository = new ClienteRepository();
             AtualizarGrid();
             CarregarEstadoCivil();
@@ -63,6 +63,7 @@ namespace ControleClientes
             editingId = null;
             gridClientes.ClearSelection();
             cmbEstadoCivil.SelectedIndex = -1;
+            txtCEP.Clear();
         }
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
@@ -74,7 +75,10 @@ namespace ControleClientes
             editingId = cliente.Id;
             cmbGenero.SelectedItem = itemGeneros.FirstOrDefault(
                 g => g.Valor == cliente.Genero);
-                
+            cmbEstadoCivil.SelectedItem = estadoCivil.FirstOrDefault(
+                g => g.Valor == cliente.EstadoCivil);
+            txtCEP.Text = cliente.Cep;
+
             tcCliente.SelectTab(tpClienteCadastro);
         }
 
@@ -93,7 +97,8 @@ namespace ControleClientes
                 Nome = txtNome.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
                 Genero = genero.Valor,
-                EstadoCivil = estadoCivil.Valor
+                EstadoCivil = estadoCivil.Valor,
+                Cep = txtCEP.Text.Trim()
             };
             if (editingId == null)
                 _repository.Adicionar(cliente);
@@ -123,9 +128,5 @@ namespace ControleClientes
                 tcCliente.SelectTab(tpClienteConsulta);
             }
         }
-
-      
-
-
     }
 }

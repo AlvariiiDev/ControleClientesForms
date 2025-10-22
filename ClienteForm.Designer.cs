@@ -41,6 +41,7 @@
             colNome = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             tpClienteCadastro = new TabPage();
+            txtCEP = new TextBox();
             label2 = new Label();
             cmbEstadoCivil = new ComboBox();
             label1 = new Label();
@@ -192,6 +193,7 @@
             // 
             // tpClienteCadastro
             // 
+            tpClienteCadastro.Controls.Add(txtCEP);
             tpClienteCadastro.Controls.Add(label2);
             tpClienteCadastro.Controls.Add(cmbEstadoCivil);
             tpClienteCadastro.Controls.Add(label1);
@@ -210,6 +212,13 @@
             tpClienteCadastro.TabIndex = 1;
             tpClienteCadastro.Text = "Cadastro";
             tpClienteCadastro.UseVisualStyleBackColor = true;
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(2, 103);
+            txtCEP.Name = "txtCEP";
+            txtCEP.Size = new Size(264, 23);
+            txtCEP.TabIndex = 11;
             // 
             // label2
             // 
@@ -358,5 +367,6 @@
         private ComboBox cmbGenero;
         private Label label2;
         private ComboBox cmbEstadoCivil;
+        private TextBox txtCEP;
     }
 }
