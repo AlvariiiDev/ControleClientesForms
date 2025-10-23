@@ -54,6 +54,7 @@
             txtNome = new TextBox();
             lblNome = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label3 = new Label();
             tcCliente.SuspendLayout();
             tpClienteConsulta.SuspendLayout();
             panel2.SuspendLayout();
@@ -193,6 +194,7 @@
             // 
             // tpClienteCadastro
             // 
+            tpClienteCadastro.Controls.Add(label3);
             tpClienteCadastro.Controls.Add(txtCEP);
             tpClienteCadastro.Controls.Add(label2);
             tpClienteCadastro.Controls.Add(cmbEstadoCivil);
@@ -215,7 +217,7 @@
             // 
             // txtCEP
             // 
-            txtCEP.Location = new Point(2, 103);
+            txtCEP.Location = new Point(3, 109);
             txtCEP.Name = "txtCEP";
             txtCEP.Size = new Size(264, 23);
             txtCEP.TabIndex = 11;
@@ -321,6 +323,15 @@
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(3, 91);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Cep";
+            // 
             // ClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -368,5 +379,6 @@
         private Label label2;
         private ComboBox cmbEstadoCivil;
         private TextBox txtCEP;
+        private Label label3;
     }
 }
