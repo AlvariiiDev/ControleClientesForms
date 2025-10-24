@@ -36,6 +36,11 @@ namespace ControleClientes
                 clienteExistente.Genero = cliente.Genero;
                 clienteExistente.EstadoCivil = cliente.EstadoCivil;
                 clienteExistente.Cep = cliente.Cep;
+                clienteExistente.Logradouro = cliente.Logradouro;
+                clienteExistente.Cidade = cliente.Cidade;
+                clienteExistente.Uf = cliente.Uf;
+                clienteExistente.Bairro = cliente.Bairro;
+                clienteExistente.Numero = cliente.Numero;
                 _context.SaveChanges();
             }
         }

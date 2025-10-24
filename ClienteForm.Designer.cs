@@ -41,6 +41,13 @@
             colNome = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             tpClienteCadastro = new TabPage();
+            txtNumero = new TextBox();
+            txtUf = new TextBox();
+            txtCidade = new TextBox();
+            txtBairro = new TextBox();
+            txtLogradouro = new TextBox();
+            txtCep_Leave = new Button();
+            label3 = new Label();
             txtCEP = new TextBox();
             label2 = new Label();
             cmbEstadoCivil = new ComboBox();
@@ -54,7 +61,6 @@
             txtNome = new TextBox();
             lblNome = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            label3 = new Label();
             tcCliente.SuspendLayout();
             tpClienteConsulta.SuspendLayout();
             panel2.SuspendLayout();
@@ -76,6 +82,7 @@
             // 
             // tpClienteConsulta
             // 
+            tpClienteConsulta.BackColor = Color.FromArgb(235, 240, 245);
             tpClienteConsulta.Controls.Add(panel2);
             tpClienteConsulta.Controls.Add(panel1);
             tpClienteConsulta.Controls.Add(gridClientes);
@@ -85,11 +92,11 @@
             tpClienteConsulta.Size = new Size(1051, 477);
             tpClienteConsulta.TabIndex = 0;
             tpClienteConsulta.Text = "Consulta";
-            tpClienteConsulta.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top;
+            panel2.BackColor = Color.FromArgb(245, 247, 250);
             panel2.Controls.Add(btnPesquisar);
             panel2.Controls.Add(txtPesquisa);
             panel2.Location = new Point(3, 3);
@@ -100,12 +107,14 @@
             // btnPesquisar
             // 
             btnPesquisar.Anchor = AnchorStyles.None;
+            btnPesquisar.BackColor = Color.FromArgb(255, 193, 7);
+            btnPesquisar.ForeColor = Color.FromArgb(51, 51, 51);
             btnPesquisar.Location = new Point(855, 0);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(94, 38);
             btnPesquisar.TabIndex = 1;
             btnPesquisar.Text = "Pesquisar";
-            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.UseVisualStyleBackColor = false;
             // 
             // txtPesquisa
             // 
@@ -120,6 +129,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.FromArgb(245, 247, 250);
             panel1.Controls.Add(btnVisualizar);
             panel1.Controls.Add(btnNovo);
             panel1.Location = new Point(-4, 429);
@@ -129,24 +139,28 @@
             // 
             // btnVisualizar
             // 
+            btnVisualizar.BackColor = Color.FromArgb(66, 133, 244);
             btnVisualizar.Dock = DockStyle.Right;
+            btnVisualizar.ForeColor = Color.White;
             btnVisualizar.Location = new Point(867, 0);
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Size = new Size(94, 42);
             btnVisualizar.TabIndex = 1;
             btnVisualizar.Text = "Visualizar";
-            btnVisualizar.UseVisualStyleBackColor = true;
+            btnVisualizar.UseVisualStyleBackColor = false;
             btnVisualizar.Click += btnVisualizar_Click;
             // 
             // btnNovo
             // 
+            btnNovo.BackColor = Color.FromArgb(52, 168, 83);
             btnNovo.Dock = DockStyle.Right;
+            btnNovo.ForeColor = Color.White;
             btnNovo.Location = new Point(961, 0);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(94, 42);
             btnNovo.TabIndex = 0;
             btnNovo.Text = "Novo";
-            btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.UseVisualStyleBackColor = false;
             btnNovo.Click += btnNovo_Click;
             // 
             // gridClientes
@@ -154,6 +168,7 @@
             gridClientes.AllowUserToAddRows = false;
             gridClientes.AllowUserToDeleteRows = false;
             gridClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gridClientes.BackgroundColor = Color.FromArgb(250, 250, 250);
             gridClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gridClientes.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colEmail });
             gridClientes.Location = new Point(-4, 41);
@@ -194,6 +209,13 @@
             // 
             // tpClienteCadastro
             // 
+            tpClienteCadastro.BackColor = Color.FromArgb(245, 247, 250);
+            tpClienteCadastro.Controls.Add(txtNumero);
+            tpClienteCadastro.Controls.Add(txtUf);
+            tpClienteCadastro.Controls.Add(txtCidade);
+            tpClienteCadastro.Controls.Add(txtBairro);
+            tpClienteCadastro.Controls.Add(txtLogradouro);
+            tpClienteCadastro.Controls.Add(txtCep_Leave);
             tpClienteCadastro.Controls.Add(label3);
             tpClienteCadastro.Controls.Add(txtCEP);
             tpClienteCadastro.Controls.Add(label2);
@@ -213,10 +235,65 @@
             tpClienteCadastro.Size = new Size(1051, 477);
             tpClienteCadastro.TabIndex = 1;
             tpClienteCadastro.Text = "Cadastro";
-            tpClienteCadastro.UseVisualStyleBackColor = true;
+            // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(3, 270);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(263, 23);
+            txtNumero.TabIndex = 18;
+            // 
+            // txtUf
+            // 
+            txtUf.Location = new Point(197, 153);
+            txtUf.Name = "txtUf";
+            txtUf.Size = new Size(70, 23);
+            txtUf.TabIndex = 17;
+            // 
+            // txtCidade
+            // 
+            txtCidade.Location = new Point(3, 212);
+            txtCidade.Name = "txtCidade";
+            txtCidade.Size = new Size(263, 23);
+            txtCidade.TabIndex = 16;
+            // 
+            // txtBairro
+            // 
+            txtBairro.Location = new Point(3, 182);
+            txtBairro.Name = "txtBairro";
+            txtBairro.Size = new Size(264, 23);
+            txtBairro.TabIndex = 15;
+            // 
+            // txtLogradouro
+            // 
+            txtLogradouro.Location = new Point(3, 153);
+            txtLogradouro.Name = "txtLogradouro";
+            txtLogradouro.Size = new Size(187, 23);
+            txtLogradouro.TabIndex = 14;
+            // 
+            // txtCep_Leave
+            // 
+            txtCep_Leave.Location = new Point(291, 105);
+            txtCep_Leave.Name = "txtCep_Leave";
+            txtCep_Leave.Size = new Size(69, 28);
+            txtCep_Leave.TabIndex = 13;
+            txtCep_Leave.Text = "Buscar";
+            txtCep_Leave.UseVisualStyleBackColor = true;
+            txtCep_Leave.Click += txtCep_Leave_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.FromArgb(51, 51, 51);
+            label3.Location = new Point(3, 91);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Cep";
             // 
             // txtCEP
             // 
+            txtCEP.BackColor = Color.FromArgb(250, 250, 250);
             txtCEP.Location = new Point(3, 109);
             txtCEP.Name = "txtCEP";
             txtCEP.Size = new Size(264, 23);
@@ -225,6 +302,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(51, 51, 51);
             label2.Location = new Point(292, 47);
             label2.Name = "label2";
             label2.Size = new Size(68, 15);
@@ -233,6 +311,7 @@
             // 
             // cmbEstadoCivil
             // 
+            cmbEstadoCivil.BackColor = Color.FromArgb(250, 250, 250);
             cmbEstadoCivil.FormattingEnabled = true;
             cmbEstadoCivil.Location = new Point(292, 65);
             cmbEstadoCivil.Name = "cmbEstadoCivil";
@@ -242,6 +321,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.FromArgb(51, 51, 51);
             label1.Location = new Point(292, 3);
             label1.Name = "label1";
             label1.Size = new Size(45, 15);
@@ -250,6 +330,7 @@
             // 
             // cmbGenero
             // 
+            cmbGenero.BackColor = Color.FromArgb(250, 250, 250);
             cmbGenero.FormattingEnabled = true;
             cmbGenero.Location = new Point(292, 21);
             cmbGenero.Name = "cmbGenero";
@@ -259,6 +340,8 @@
             // btnExcluir
             // 
             btnExcluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnExcluir.BackColor = Color.IndianRed;
+            btnExcluir.ForeColor = Color.White;
             btnExcluir.Image = Properties.Resources.icons8_lixo_16__1_;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.Location = new Point(6, 440);
@@ -266,33 +349,38 @@
             btnExcluir.Size = new Size(94, 31);
             btnExcluir.TabIndex = 6;
             btnExcluir.Text = "Excluir";
-            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.UseVisualStyleBackColor = false;
             btnExcluir.Click += btnExcluir_Click;
             // 
             // btnSalvar
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSalvar.BackColor = Color.FromArgb(52, 168, 83);
+            btnSalvar.ForeColor = Color.White;
             btnSalvar.Location = new Point(851, 443);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(94, 31);
             btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
-            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.UseVisualStyleBackColor = false;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.BackColor = Color.FromArgb(189, 189, 189);
+            btnCancelar.ForeColor = Color.White;
             btnCancelar.Location = new Point(951, 443);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 31);
             btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = Color.FromArgb(250, 250, 250);
             txtEmail.Location = new Point(3, 65);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(263, 23);
@@ -301,6 +389,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
+            lblEmail.ForeColor = Color.FromArgb(51, 51, 51);
             lblEmail.Location = new Point(3, 47);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(36, 15);
@@ -309,6 +398,7 @@
             // 
             // txtNome
             // 
+            txtNome.BackColor = Color.FromArgb(250, 250, 250);
             txtNome.Location = new Point(3, 21);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(263, 23);
@@ -317,25 +407,18 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
+            lblNome.ForeColor = Color.FromArgb(51, 51, 51);
             lblNome.Location = new Point(3, 3);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(40, 15);
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 91);
-            label3.Name = "label3";
-            label3.Size = new Size(28, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Cep";
-            // 
             // ClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(230, 230, 230);
             ClientSize = new Size(1057, 507);
             Controls.Add(tcCliente);
             Name = "ClienteForm";
@@ -380,5 +463,11 @@
         private ComboBox cmbEstadoCivil;
         private TextBox txtCEP;
         private Label label3;
+        private Button txtCep_Leave;
+        private TextBox txtBairro;
+        private TextBox txtLogradouro;
+        private TextBox txtCidade;
+        private TextBox txtUf;
+        private TextBox txtNumero;
     }
 }

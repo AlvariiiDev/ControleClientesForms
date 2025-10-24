@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
 
 namespace ControleClientes
 {
@@ -64,6 +67,10 @@ namespace ControleClientes
             gridClientes.ClearSelection();
             cmbEstadoCivil.SelectedIndex = -1;
             txtCEP.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
         }
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
@@ -78,6 +85,11 @@ namespace ControleClientes
             cmbEstadoCivil.SelectedItem = estadoCivil.FirstOrDefault(
                 g => g.Valor == cliente.EstadoCivil);
             txtCEP.Text = cliente.Cep;
+            txtLogradouro.Text = cliente.Logradouro;
+            txtUf.Text = cliente.Uf;
+            txtCidade.Text = cliente.Cidade;
+            txtNumero.Text = cliente.Numero;
+            txtBairro.Text = cliente.Bairro;
 
             tcCliente.SelectTab(tpClienteCadastro);
         }
@@ -98,7 +110,12 @@ namespace ControleClientes
                 Email = txtEmail.Text.Trim(),
                 Genero = genero.Valor,
                 EstadoCivil = estadoCivil.Valor,
-                Cep = txtCEP.Text.Trim()
+                Cep = txtCEP.Text.Trim(),
+                Numero = txtNumero.Text.Trim(),
+                Cidade = txtCidade.Text.Trim(),
+                Uf = txtUf.Text.Trim(),
+                Bairro = txtBairro.Text.Trim(),
+                Logradouro = txtLogradouro.Text.Trim(),
             };
             if (editingId == null)
                 _repository.Adicionar(cliente);
@@ -126,6 +143,58 @@ namespace ControleClientes
                 _repository.Remover(cliente.Id);
                 AtualizarGrid();
                 tcCliente.SelectTab(tpClienteConsulta);
+            }
+        }
+        private async Task<Endereco> BuscarCepAsync(string cep)
+        {
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<Endereco>(responseBody);
+                }
+                else
+                    throw new Exception($"Consultando o CEP. Código de status: {response.StatusCode}");
+            }
+        }
+
+        private async void txtCep_Leave_Click(object sender, EventArgs e)
+        {
+            string cep = txtCEP.Text.Trim().Replace("-", "");
+
+            if (string.IsNullOrEmpty(cep))
+            {
+                MessageBox.Show("Por favor, insira um CEP válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Endereco endereco = await BuscarCepAsync(cep);
+
+                if (endereco != null)
+                {
+                    txtLogradouro.Text = endereco.Logradouro;
+                    txtBairro.Text = endereco.Bairro;
+                    txtCidade.Text = endereco.Localidade;
+                    txtUf.Text = endereco.Uf;
+                    txtNumero.Focus();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Erro na requisição HTTP: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonException ex)
+            {
+                MessageBox.Show($"Erro ao ler o retorno JSON: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

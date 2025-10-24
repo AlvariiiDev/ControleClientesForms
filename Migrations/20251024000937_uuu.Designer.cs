@@ -2,6 +2,7 @@
 using ControleClientes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ControleClientes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251024000937_uuu")]
+    partial class uuu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,15 +32,7 @@ namespace ControleClientes.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Cep")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -51,19 +46,7 @@ namespace ControleClientes.Migrations
                     b.Property<int>("Genero")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Uf")
                         .IsRequired()
                         .HasColumnType("text");
 
